@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Area Personal </h2>
+        <div id="buttons">
+            <button name="buttonSalir" id="buttonSalir">Salir</button>
+            <button name="buttonMostrarInformacion" id="buttonMostrar">Mostar Informacion</button>
+
+        </div>
+    </div>
+
+    <div class="setInformacion" id="setInformacion">
+        <h3>Personal que esta laborando actualmente</h3>
+    </div>
+    <div id="card-list">
+
+    </div>
+
+    <script>
+        document.getElementById("buttonMostrar").addEventListener("click", crearInformacion)
+        document.getElementById("buttonSalir").addEventListener("click", limpiarContenido)
+        const users = [
+            {
+                image: "https://cdn.pixabay.com/photo/2018/08/28/13/29/avatar-3637561_960_720.png",
+                name: 'Mauricio ',
+                profession: 'Engeneri',
+                description: 'Los ingenieros utilizan el conocimiento de la ciencia, las matemáticas y la experiencia para encontrar las mejores soluciones a los problemas concretos'
+
+            },
+            {
+                image: "https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_960_720.png",
+                name: 'Andres ',
+                profession: 'Chef',
+                description: 'Los ingenieros utilizan el conocimiento de la ciencia, las matemáticas y la experiencia para encontrar las mejores soluciones a los problemas concretos'
+            },
+            {
+                image: "https://cdn.pixabay.com/photo/2014/04/03/10/32/user-310807_960_720.png",
+                name: 'Alejandra ',
+                profession: 'Medic',
+                description: 'Los ingenieros utilizan el conocimiento de la ciencia, las matemáticas y la experiencia para encontrar las mejores soluciones a los problemas concretos'
+            },
+            {
+                image: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png",
+                name: 'Victor ',
+                profession: 'Mechanic',
+                description: 'Los ingenieros utilizan el conocimiento de la ciencia, las matemáticas y la experiencia para encontrar las mejores soluciones a los problemas concretos'
+            },
+
+        ]
+
+        function crearInformacion() {
+            users.forEach(user => {
+                const userImageTag = document.createElement("img")
+                const card = document.createElement("div")
+                const icons= document.createElement("div")
+                const userNameTag = document.createElement("h2")
+                const professionTag = document.createElement("h4")
+                const descriptionTag = document.createElement("p")
+                const facebookIconsTag = document.createElement("img")
+                const instragramIconsTag = document.createElement("img")
+                const gmailIconsTag = document.createElement("img")
+                card.classList.add('user-card')
+                userImageTag.classList.add('profile-photo')
+                icons.classList.add('container-icon')
+                userNameTag.textContent = user.name
+                professionTag.textContent = user.profession
+                descriptionTag.textContent = user.description
+                userImageTag.src = user.image
+                facebookIconsTag.src = "https://e7.pngegg.com/pngimages/261/174/png-clipart-social-media-computer-icons-facebook-media-icon-blue-trademark.png";
+                facebookIconsTag.classList.add('social-network-icon')
+                instragramIconsTag.src = "https://w7.pngwing.com/pngs/298/603/png-transparent-instagram-application-icon-logo-computer-icons-social-media-insta-purple-text-rectangle-thumbnail.png";
+                instragramIconsTag.classList.add('social-network-icon')
+                gmailIconsTag.src = "https://w7.pngwing.com/pngs/677/315/png-transparent-gmail-computer-icons-email-google-play-gmail-angle-rectangle-triangle-thumbnail.png"
+                gmailIconsTag.classList.add('social-network-icon')
+                card.appendChild(userImageTag)
+                card.appendChild(userNameTag)
+                card.appendChild(professionTag)
+                card.appendChild(descriptionTag)
+                icons.appendChild(facebookIconsTag)
+                icons.appendChild(instragramIconsTag)
+                icons.appendChild(gmailIconsTag)
+                card.appendChild(icons)
+                const cardList = document.getElementById("card-list")
+                cardList.appendChild(card)
+            });
+
+
+        }
+        function limpiarContenido() {
+            document.getElementById("card-list").innerHTML = "";
+        }
+    </script>
+
+</body>
+
+</html>
